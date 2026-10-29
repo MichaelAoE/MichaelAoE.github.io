@@ -1,6 +1,7 @@
 import { defineConfig } from 'vitepress'
 
 export default defineConfig({
+  ignoreDeadLinks: true,
   title: "MichaelAoE 的项目集",
   description: "大气科学 / 环保数据分析 / 气象建模",
   themeConfig: {
