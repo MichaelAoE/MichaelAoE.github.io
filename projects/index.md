@@ -34,6 +34,14 @@
 
 [查看详情 →](/projects/douban-analysis) | [GitHub 仓库](https://github.com/MichaelAoE/Douban-analysis)
 
+### [全球辐射与海温时空耦合分析](/projects/era5-radiation-sst)
+> Python · xarray · Matplotlib · 气象时空数据分析 · 课程论文
+
+基于 CERES 卫星辐射数据与 ERA5 海温再分析数据，开展 2010-2020 年全球大气顶短波辐射通量与海表温度的时空特征及耦合机制研究。
+使用 Python 完成多源数据插值对齐、趋势分析、空间相关计算与全维度可视化，输出完整科研论文与系列分析图表。
+
+[查看详情 →](/projects/era5-radiation-sst)
+
 
 ---
 
