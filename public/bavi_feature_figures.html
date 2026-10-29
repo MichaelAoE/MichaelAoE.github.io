@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<title>巴威台风 · 四大核心功能展示图</title>
+<style>
+  :root{--ink:#0f172a;--muted:#64748b;--line:#e2e8f0;--bg:#f1f5f9}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:"Microsoft YaHei","Segoe UI",system-ui,sans-serif}
+  header{background:#0f172a;color:#fff;padding:28px 40px}
+  header h1{margin:0 0 6px;font-size:24px}
+  header p{margin:0;color:#94a3b8;font-size:13px}
+  main{max-width:1480px;margin:0 auto;padding:28px 24px 60px}
+  section{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px 18px 22px;margin-bottom:22px;box-shadow:0 1px 2px rgba(15,23,42,.04)}
+  section h2{margin:0 0 6px;font-size:17px}
+  section .cap{margin:0 0 14px;color:var(--muted);font-size:12.5px;line-height:1.6}
+  img{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:8px;background:#fff}
+  .tag{display:inline-block;background:#eef2ff;color:#3730a3;border-radius:999px;padding:2px 10px;font-size:11.5px;margin-right:8px}
+  footer{max-width:1480px;margin:0 auto;padding:0 24px 40px;color:var(--muted);font-size:12px;line-height:1.7}
+  code{background:#eef2f7;padding:1px 5px;border-radius:4px}
+</style>
+</head>
+<body>
+<header>
+  <h1>巴威（Bavi）· 四大核心功能展示图</h1>
+  <p>断点 2026-07-10 14:00 UTC ｜ 已观测 67 点（3 h 间隔）｜ 模型 GRU + TCN + 惯性集合 0.45/0.30/0.25 ｜ 数据全部来自项目已落盘的正式运行结果</p>
+</header>
+
+<main>
+  <section>
+    <h2><span class="tag">功能 1</span>智能相似检索</h2>
+    <p class="cap">输入巴威断点前的 67 点实时路径，经「标量粗筛 → LCSS 形状粗筛 → 航向/移速过滤 → 多因子 FastDTW 精排」四级漏斗，从 4,289 场历史台风中返回 Top-10，并给出路径距离、形态相似度、航向差等多维指标。</p>
+    <img src="fig1_retrieval.svg" alt="智能相似检索"/>
+  </section>
+
+  <section>
+    <h2><span class="tag">功能 2</span>72 小时多时效路径预报</h2>
+    <p class="cap">以断点前 24 步（72 h）× 8 维特征为输入，由注意力 Seq2Seq-GRU、TCN 与惯性外推三模型按 0.45/0.30/0.25 集合，输出 12 步 × 6 h 的 72 小时路径；右侧给出集合构成、逐时效误差与运行指标。</p>
+    <img src="fig2_forecast.svg" alt="72 小时路径预报"/>
+  </section>
+
+  <section>
+    <h2><span class="tag">功能 3</span>相似路径反馈融合修正</h2>
+    <p class="cap">用「已知路径 + 基础预测」检索 Top-5 相似台风，取其后续相对位移做集合平均，按时效权重 α（0.35/0.65）与基础预测融合。左图为融合结果与实况对比，右图为融合前后逐时效误差——0–18 h 明显改善，60–72 h 退化，说明仍需按分歧角做门控。</p>
+    <img src="fig3_fusion.svg" alt="相似路径反馈融合"/>
+  </section>
+
+  <section>
+    <h2><span class="tag">功能 4</span>量化指标对比</h2>
+    <p class="cap">30 例固定测试集与巴威严格无泄漏检验的 ADE/FDE/Top-5 命中率对比，逐时效误差柱状、算法演进（965.0 → 344.8 km，−64.3%）以及检索与运行指标表。注意两组数字不可直接横比：前者是 30 例均值，后者是单例留出。</p>
+    <img src="fig4_metrics.svg" alt="量化指标对比"/>
+  </section>
+
+  <footer>
+    <p><strong>数据来源</strong>：<code>output/bavii_strict_similarity.json</code>、<code>output/bavii_prediction_result_72h.json</code>、<code>output/bavii_strict_prediction_vs_truth.csv</code>、<code>output/analog_fusion_optimization_report.json</code>、<code>output/bavi_analog_fusion_map.html</code>。</p>
+    <p><strong>口径说明</strong>：三张图的断点一致（2026-07-10 14:00 UTC），真值仅用于评分，不参与预测生成、检索排序与融合；120/168 h 长时效因超出训练分布发散，未在图中展示。</p>
+    <p><strong>已知缺口</strong>：图 2 未画 GRU/TCN/惯性三个成员各自的轨迹，图 3 未画融合前的基础预测轨迹——原因是 <code>predict_new_typhoon.py</code> 只写入了最终 <code>prediction</code> 与 <code>raw_prediction</code>，未持久化 <code>prediction_components</code> 与融合前的 base 路径。补齐方式见项目报告第 7 章。</p>
+  </footer>
+</main>
+</body>
+</html>
