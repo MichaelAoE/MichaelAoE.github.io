@@ -7,8 +7,8 @@ hero:
   tagline: 复旦大学大气科学本科 | 专注气象预报、环境数据分析与机器学习建模
   actions:
     - theme: brand
-      text: 查看项目
-      link: /projects/typhoon-model
+      text: 查看全部项目
+      link: /projects/
     - theme: alt
       text: GitHub 主页
       link: https://github.com/MichaelAoE

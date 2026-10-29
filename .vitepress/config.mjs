@@ -6,7 +6,17 @@ export default defineConfig({
   themeConfig: {
     nav: [
       { text: '首页', link: '/' },
-      { text: '台风预测模型', link: '/projects/typhoon-model' },
+      { 
+        text: '项目作品', 
+        items: [
+          { text: '全部项目', link: '/projects/' },
+          { text: '相似台风查询与路径预测系统', link: '/projects/typhoon-model' },
+          { text: '澜湄农业污水处理模型', link: '/projects/lanmei-sewage' },
+          { text: '豆瓣影视数据分析', link: '/projects/douban-analysis' },
+          { text: 'CIFAR-10 图像分类研究', link: '/projects/cifar10-cnn' },
+          { text: '纯 NumPy 手写数字识别', link: '/projects/mnist-numpy' },
+        ]
+      },
     ],
 
     socialLinks: [
