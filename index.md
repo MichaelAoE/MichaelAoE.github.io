@@ -3,8 +3,8 @@ layout: home
 
 hero:
   name: 蒯志霖 / MichaelAoE
-  text: 大气科学 · 环保数据分析 · 气象建模
-  tagline: 复旦大学大气科学本科 | 专注气象预报、环境数据分析与机器学习建模
+  text: 大气科学 
+  tagline: 复旦大学大气科学2027届本科 | 气象预报、环境数据分析与机器学习
   actions:
     - theme: brand
       text: 查看全部项目
