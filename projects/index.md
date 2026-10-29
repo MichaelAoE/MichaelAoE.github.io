@@ -27,13 +27,13 @@
 
 ## 数据分析与商业智能
 
-### 豆瓣影视数据分析与 BI 可视化
+### [豆瓣影视数据分析与 BI 可视化](/projects/douban-analysis)
 > MySQL · SQL 数据清洗 · BI 可视化 · 用户画像分析
 
-基于豆瓣影视评分与评论数据集，通过 MySQL 完成多表数据清洗、指标计算与特征挖掘，搭建 BI 可视化看板。
-从内容类型、用户偏好、评分分布等维度输出分析结论，沉淀标准化数据分析与报表输出流程。
+基于豆瓣影视公开数据集，围绕影片信息、用户评分、评论数据，通过 MySQL 完成多表数据清洗、指标计算与特征挖掘，搭建 BI 可视化看板。从内容类型、用户偏好、评分分布等维度输出分析结论，沉淀标准化数据分析与报表输出流程。
 
-[查看详情 →](/projects/douban-analysis)
+[查看详情 →](/projects/douban-analysis) | [GitHub 仓库](https://github.com/MichaelAoE/Douban-analysis)
+
 
 ---
 
